@@ -1,38 +1,49 @@
 <template>
   <div id="app">
-    <div id="tab-bar">
-      <div class="tab-bar-item">首页</div>
-      <div class="tab-bar-item">分类</div>
-      <div class="tab-bar-item">购物车</div>
-      <div class="tab-bar-item">我的</div>
-    </div>
+    <router-view></router-view>
+    <!-- 3. 使用 -->
+    <tab-bar>
+      <tab-bar-item path="/home">
+        <i class="icon-home" slot="item-icon"></i>
+        <i class="icon-home" slot="item-icon-active" style="color: pink"></i>
+        <div slot="item-text">首页</div>
+      </tab-bar-item>
+      <tab-bar-item path="/category">
+        <i class="icon-grid" slot="item-icon"></i>
+        <i class="icon-grid" slot="item-icon-active" style="color: pink"></i>
+        <div slot="item-text">分类</div>
+      </tab-bar-item>
+      <tab-bar-item path="/cart">
+        <i class="icon-cart" slot="item-icon"></i>
+        <i class="icon-cart" slot="item-icon-active" style="color: pink"></i>
+        <div slot="item-text">购物车</div>
+      </tab-bar-item>
+      <tab-bar-item path="/profile">
+        <i class="icon-user" slot="item-icon"></i>
+        <i class="icon-user" slot="item-icon-active" style="color: pink"></i>
+        <div slot="item-text">我的</div>
+      </tab-bar-item>
+    </tab-bar>
   </div>
 </template>
 
 <script>
+// 1. 导入组件
+import TabBar from './components/tabbar/TabBar.vue'
+import TabBarItem from './components/tabbar/TabBarItem.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  // 2. 注册组件
+  components: {
+    TabBar,
+    TabBarItem
+  }
 }
 </script>
 
 <style>
   @import "./assets/css/base.css";
-
-  #tab-bar {
-    display: flex;
-    background-color: #f6f6f6;
-
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    box-shadow: 0 -1px 1px rgba(100, 100, 100, .1);
-  }
-
-  .tab-bar-item {
-    flex: 1;
-    line-height: 49px;
-    text-align: center;
-  }
+  @import "./assets/css/style.css"
+  
 </style>
